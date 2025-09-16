@@ -1,0 +1,14 @@
+_schema-version: '1.0'
+repository: registry-server
+tag: latest
+before-all:
+  - npx cds build --production
+modules:
+  - name: kyma-srv
+    build-parameters:
+      buildpack:
+        type: nodejs
+        builder: builder-jammy-base
+        path: gen/srv
+        env:
+          BP_NODE_RUN_SCRIPTS: ""

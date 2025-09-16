@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=./values.schema.json
+
+global:
+  domain: abc.com
+  imagePullSecret:
+    name: docker-registry
+  image:
+    registry: registry-server
+    tag: latest
+srv:
+  bindings:
+    {}
+  image:
+    repository: kyma-srv
+  resources:
+    limits:
+      ephemeral-storage: 1G
+      memory: 500M
+    requests:
+      ephemeral-storage: 1G
+      cpu: 500m
+      memory: 500M
+  health:
+    liveness:
+      path: /health
+    readiness:
+      path: /health
